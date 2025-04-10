@@ -1,4 +1,4 @@
-import * as pako from 'pako';
+import { inflate, deflate } from 'pako';
 import { DescriptionType, FogOfWarType, MapPosition, ProfileType, ScreenInfo, SelectionShape, ToolbarPosition, type GameOptions, type ProfileData, type ShortcutData, type TemplateData } from './api';
 
 type Encoding = "utf-8" | "utf-16";
@@ -326,7 +326,7 @@ function deserializeGameOptions(deserializer: BinaryReader): GameOptions {
 }
 
 export async function readFile(file: File): Promise<ProfileData | undefined> {
-  const output = pako.inflate(await file.arrayBuffer());
+  const output = inflate(await file.arrayBuffer());
 
   let buffer = new Uint8Array(output).buffer;
   const deserializer = new BinaryReader(buffer);
@@ -541,5 +541,5 @@ export function serializeProfileData(profile: ProfileData): Uint8Array {
   }
 
   const bytes = serializer.getBytes();
-  return pako.deflate(bytes);
+  return deflate(bytes);
 }
