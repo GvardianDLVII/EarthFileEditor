@@ -7,10 +7,6 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    2: typeof import('./src/components/GameOptionsGraphics copy 2.vue')['default']
-    3: typeof import('./src/components/GameOptionsGraphics copy 3.vue')['default']
-    4: typeof import('./src/components/GameOptionsGraphics copy 4.vue')['default']
-    copy: typeof import('./src/components/GameOptionsGraphics copy.vue')['default']
     FileEditor: typeof import('./src/components/FileEditor.vue')['default']
     GameOptions: typeof import('./src/components/GameOptions.vue')['default']
     GameOptionsGraphics: typeof import('./src/components/GameOptionsGraphics.vue')['default']
